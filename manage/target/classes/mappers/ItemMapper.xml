@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jtboot.manager.mapper.ItemMapper">
+    <select id="findItemAll" resultType="com.jtboot.manager.pojo.Item">
+        SELECT * FROM tb_item ORDER BY updated DESC
+    </select>
+    
+    <select id="findItemByPage" resultType="com.jtboot.manager.pojo.Item">
+        SELECT * FROM tb_item ORDER BY updated DESC LIMIT #{begin}, #{rows}
+    </select>
+
+    <select id="findItemCatName" resultType="string">
+        SELECT name FROM tb_item_cat WHERE id=#{itemCatId}
+    </select>
+
+    <update id="updateItemStatus">
+        UPDATE tb_item
+        <set>
+            status = #{status}
+        </set>
+        <where>
+            id in
+            <foreach collection="ids" item="i" separator="," close=")" open="(">
+                #{i}
+            </foreach>
+        </where>
+    </update>
+
+    <delete id="deleteByIDS">
+        DELETE FROM tb_item
+        <where>
+            id in
+            <foreach collection="ids" item="v" separator="," open="(" close=")">
+                #{v}
+            </foreach>
+        </where>
+    </delete>
+</mapper>
