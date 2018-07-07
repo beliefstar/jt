@@ -7,6 +7,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -112,6 +113,33 @@ public class HttpClientService {
 
     public String doPost(String uri, Map<String, String> paramMap) throws IOException {
         return doPost(uri, paramMap, "utf-8");
+    }
+
+    public String doPostJson(String url, String json) throws Exception {
+        // 创建http POST请求
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.setConfig(requestConfig);
+
+        if(null != json){
+            //设置请求体为 字符串
+            StringEntity stringEntity = new StringEntity(json,"UTF-8");
+            httpPost.setEntity(stringEntity);
+        }
+
+        CloseableHttpResponse response = null;
+        try {
+            // 执行请求
+            response = httpClient.execute(httpPost);
+            // 判断返回状态是否为200
+            if (response.getStatusLine().getStatusCode() == 200) {
+                return EntityUtils.toString(response.getEntity(), "UTF-8");
+            }
+        } finally {
+            if (response != null) {
+                response.close();
+            }
+        }
+        return null;
     }
 }
 
@@ -295,5 +323,6 @@ public class HttpClientService {
         }
         return null;
     }
-*/
+}
 
+*/

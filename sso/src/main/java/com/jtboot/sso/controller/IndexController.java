@@ -59,11 +59,13 @@ public class IndexController {
 
     @RequestMapping("/query/{ticket}")
     @ResponseBody
-    public SysResult queryValidate(@PathVariable String ticket) {
+    public Object queryValidate(@PathVariable String ticket, String callback) {
 
         try {
             User user = userService.checkLogined(ticket);
-            return SysResult.oK(user);
+            MappingJacksonValue jsonp = new MappingJacksonValue(SysResult.oK(user));
+            jsonp.setJsonpFunction(callback);
+            return jsonp;
         } catch (Exception e) {
             e.printStackTrace();
             return SysResult.build(201, "未登录");

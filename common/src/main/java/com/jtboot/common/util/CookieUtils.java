@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class CookieUtils {
 
-    private static int DEFAULT_MAX_AGE = 1000 * 60 * 60 * 2;//默认2小时
+    private static int DEFAULT_MAX_AGE = 60 * 60 * 2;//默认2小时
 
     public static void deleteCookie(HttpServletResponse response, String key) {
         setCookie(response, key, null, 0);

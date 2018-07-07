@@ -11,6 +11,7 @@
 		<module>manage</module>
 		<module>web</module>
         <module>sso</module>
+        <module>cart</module>
     </modules>
     <packaging>pom</packaging>
 
