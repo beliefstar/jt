@@ -13,4 +13,6 @@ public interface CartService {
     Integer delete(Long userId, Long itemId);
 
     Integer add(Cart cart);
+
+    void sycCart(List<Cart> cart, Long userId);
 }

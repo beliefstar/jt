@@ -1,4 +1,4 @@
-package com.jtboot.common.vo;
+package com.jtboot.common.exception;
 
 public class ServiceException extends RuntimeException {
     public ServiceException() {

@@ -6,10 +6,7 @@ import com.jtboot.common.constant.ResultConstant;
 import com.jtboot.common.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -60,9 +57,9 @@ public class CartController {
         }
     }
 
-    @GetMapping("/add")
+    @PostMapping("/add")
     @ResponseBody
-    public SysResult addItem(Cart cart) {
+    public SysResult addItem(@RequestBody Cart cart) {
         try {
             cartService.add(cart);
             return SysResult.oK();
@@ -70,5 +67,12 @@ public class CartController {
             e.printStackTrace();
             return SysResult.build(201, ResultConstant.OPERATION_FAIL);
         }
+    }
+
+    @PostMapping("/sycCart/{userId}")
+    @ResponseBody
+    public SysResult sycCart(@RequestBody List<Cart> list, @PathVariable Long userId) {
+        cartService.sycCart(list, userId);
+        return SysResult.oK();
     }
 }

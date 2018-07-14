@@ -123,6 +123,7 @@ public class HttpClientService {
         if(null != json){
             //设置请求体为 字符串
             StringEntity stringEntity = new StringEntity(json,"UTF-8");
+            stringEntity.setContentType("application/json");
             httpPost.setEntity(stringEntity);
         }
 

@@ -61,7 +61,7 @@
 	<li id="summary-price">
 		<div class="dt">京&nbsp;淘&nbsp;价：</div>
 		<div class="dd">
-			<strong class="p-price"  id="jd-price">￥${item.price/100}</strong>
+			<strong class="p-price"  id="jd-price">￥${(item.price/100)?c}</strong>
 			<a id="notice-downp" href="#none" target="_blank" clstag="shangpin|keycount|product|jiangjia">(降价通知)</a>
 		</div>
 	</li>
@@ -136,7 +136,7 @@
 									<input class="text" id="buy-num" name="num" value="1" onkeyup="setAmount.modify('#buy-num');"/>
 									<input type="hidden" class="text"  name="itemTitle" value="${item.title }"/>
 									<input type="hidden" class="text" name="itemImage" value="${item.image[0]}"/>
-									<input type="hidden" class="text" name="itemPrice" value="${item.price}"/>
+									<input type="hidden" class="text" name="itemPrice" value="${item.price?c}"/>
 								</form>
 						</div>
 					</div>

@@ -2,14 +2,13 @@ package com.jtboot.sso.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jtboot.common.service.RedisService;
-import com.jtboot.common.vo.ServiceException;
+import com.jtboot.common.exception.ServiceException;
 import com.jtboot.sso.mapper.UserMapper;
 import com.jtboot.sso.pojo.User;
 import com.jtboot.sso.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.JedisCluster;
 
 import java.io.IOException;
 import java.util.Date;

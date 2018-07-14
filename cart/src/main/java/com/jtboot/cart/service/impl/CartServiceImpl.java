@@ -6,6 +6,7 @@ import com.jtboot.cart.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -50,5 +51,24 @@ public class CartServiceImpl implements CartService {
         }
         cart.setId(null);
         return cartMapper.insert(cart);
+    }
+
+    @Override
+    public void sycCart(List<Cart> carts, Long userId) {
+        if (userId == null) return;
+        final List<Cart> byUserId = findByUserId(userId);
+        Iterator<Cart> iterator = carts.iterator();
+        while (iterator.hasNext()) {
+            Cart c = iterator.next();
+            for (Cart item : byUserId) {
+                if (item.getItemId().equals(c.getItemId())) {
+                    updateNum(item.getUserId(), item.getItemId(), c.getNum());
+                    iterator.remove();
+                }
+            }
+        }
+        for (Cart c : carts) {
+            add(c);
+        }
     }
 }

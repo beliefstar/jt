@@ -12,7 +12,7 @@
 		<module>web</module>
         <module>sso</module>
         <module>cart</module>
-    </modules>
+	</modules>
     <packaging>pom</packaging>
 
 	<name>root</name>

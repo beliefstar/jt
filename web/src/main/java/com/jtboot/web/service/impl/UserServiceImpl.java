@@ -2,7 +2,7 @@ package com.jtboot.web.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jtboot.common.service.HttpClientService;
-import com.jtboot.common.vo.ServiceException;
+import com.jtboot.common.exception.ServiceException;
 import com.jtboot.common.vo.SysResult;
 import com.jtboot.web.pojo.User;
 import com.jtboot.web.service.UserService;

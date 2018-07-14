@@ -4,14 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jtboot.common.service.RedisService;
 import com.jtboot.common.vo.ItemCatData;
 import com.jtboot.common.vo.ItemCatResult;
-import com.jtboot.common.vo.ServiceException;
+import com.jtboot.common.exception.ServiceException;
 import com.jtboot.manager.mapper.ItemCatMapper;
 import com.jtboot.manager.pojo.ItemCat;
 import com.jtboot.manager.service.ItemCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import redis.clients.jedis.Jedis;
 
 import java.util.*;
 
